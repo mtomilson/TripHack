@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import SignUp from "./signUp";
+import SignUp from "./SignUp";
 import Login from "./Login";
 
 export default function Onboarding() {

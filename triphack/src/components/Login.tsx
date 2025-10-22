@@ -1,14 +1,17 @@
 import React, { type FormEvent } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword, type UserCredential } from "firebase/auth";
-import { Link } from "react-router-dom";
-import Test from "./Test";
+import { useNavigate } from "react-router-dom";
+import Test from "./Discover";
 import { useState } from "react";
 
 export default function Login() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [userr, setUser] = useState<UserCredential>();
+  const [user, setUser] = useState<UserCredential>();
+  
+  let navigate = useNavigate();
+
 
   const canLogin = email !== "" && password !== "";
 
@@ -19,6 +22,7 @@ export default function Login() {
         .then((user) => {
           setUser(user);
           console.log(user);
+          navigate("/")
         })
         .catch((error) => {
           console.log(error.message);
@@ -69,17 +73,16 @@ export default function Login() {
               />
             </div>
           </div>
-          <Link to="/Test">
-            <button
-              type="submit"
-              disabled={!canLogin}
-              className="bg-black font-semibold text-white rounded-md h-10 w-full hover:cursor-pointer
+
+          <button
+            type="submit"
+            disabled={!canLogin}
+            className="bg-black font-semibold text-white rounded-md h-10 w-full hover:cursor-pointer
                 inline-flex items-center justify-center px-3.5 py-2.5 leading-7 hover:bg-black/80 disabled:cursor-not-allowed"
-              onClick={handleLogin}
-            >
-              Login
-            </button>
-          </Link>
+            onClick={handleLogin}
+          >
+            Login
+          </button>
         </div>
       </form>
     </div>

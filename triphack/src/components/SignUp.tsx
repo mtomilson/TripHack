@@ -2,11 +2,15 @@ import React from "react";
 import { auth } from "../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function SignUp() {
   const [email, setEmail] = useState<string>(""); //set email takes parameters of string only or undefined, default state is undefined
   const [password, setPassword] = useState<string>("");
   const [confirmPass, setConfirmPass] = useState<string>("");
+
+  let navigate = useNavigate();
+
 
   const canSignUp =
     email !== "" &&
@@ -23,7 +27,7 @@ export default function SignUp() {
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user.uid, " Successfully signed up");
+          navigate("/")
         })
         .catch((error) => {
           console.log(error.message);
