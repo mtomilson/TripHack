@@ -1,5 +1,5 @@
 import React from "react";
-import { auth } from "../firebase"
+import { auth } from "../firebase";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useState, useEffect } from "react";
 
@@ -8,12 +8,13 @@ export default function SignUp() {
   const [password, setPassword] = useState<string>("");
   const [confirmPass, setConfirmPass] = useState<string>("");
 
-
   const canSignUp =
-    email !== undefined &&
-    password !== undefined &&
-    confirmPass !== undefined &&
+    email !== "" &&
+    password !== "" &&
+    confirmPass !== "" &&
     password === confirmPass;
+
+  console.log(canSignUp);
 
   const handleSignUp = (e: React.FormEvent) => {
     // fixes render problem where when submitting form it would refresh the page and take to login page
@@ -46,7 +47,9 @@ export default function SignUp() {
                  border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400
                  focus:outline-none focus:ring-1 focus:ring-gray-400 offset-1 disabled:cursor-not-allowed
                  disabled:opacity-50"
-                
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </div>
           </div>
@@ -63,6 +66,9 @@ export default function SignUp() {
                  border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400
                  focus:outline-none focus:ring-1 focus:ring-gray-400 offset-1 disabled:cursor-not-allowed
                  disabled:opacity-50"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
             </div>
           </div>
@@ -79,6 +85,9 @@ export default function SignUp() {
                  border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400
                  focus:outline-none focus:ring-1 focus:ring-gray-400 offset-1 disabled:cursor-not-allowed
                  disabled:opacity-50"
+                onChange={(e) => {
+                  setConfirmPass(e.target.value);
+                }}
               />
             </div>
           </div>
@@ -86,7 +95,7 @@ export default function SignUp() {
           <button
             type="submit"
             disabled={!canSignUp}
-            className="bg-black font-semibold text-white rounded-md h-10 w-full
+            className="bg-black font-semibold text-white rounded-md h-10 w-full hover:cursor-pointer
                 inline-flex items-center justify-center px-3.5 py-2.5 leading-7 hover:bg-black/80 disabled:cursor-not-allowed"
             onClick={handleSignUp}
           >
