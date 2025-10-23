@@ -1,6 +1,6 @@
 # TripHack
 travel assist
-
+## HOW TO RUN 
 - npm i 
 - npm run dev to website
 - add .env file for firebase config
