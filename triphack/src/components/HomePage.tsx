@@ -1,8 +1,21 @@
 import { CiSearch } from "react-icons/ci";
 
 export default function HomePage() {
+  const callBackend = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/amadeus/search");
+      const data = await response.json();
+
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
   return (
     <>
+    <button onClick={callBackend} className="hover:cursor-pointer ml-200">CLICK ME</button>
       <div className="flex flex-col text-center items-center justify-center pt-20 text-3xl">
         <p className="font-bold text-black">
           Welcome to TripHack! Find all your trip planning needs in one spot!

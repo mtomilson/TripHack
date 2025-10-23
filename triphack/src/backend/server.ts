@@ -3,7 +3,8 @@ import cors from "cors";
 import amadeus from "./routes/amadeus"
 
 const app = express();
-
+app.use(cors());
+app.use(express.json());
 app.use("/api/amadeus", amadeus)
 
 
