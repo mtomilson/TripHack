@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth } from "../firebase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function NavBar() {
   const [isLoggedIn, setLoggedIn] = useState<boolean>(false);
@@ -18,31 +18,26 @@ export default function NavBar() {
   });
 
   return (
-    <nav className="bg-primary flex justify-between items-center pl-3 h-13 ">
+    <nav className="bg-white flex justify-between items-center pl-5 h-13 ">
       <ul className="flex space-x-6">
-        <Link to="/" className="text-white font-bold">
-          HomePage
+        <Link to="/" className="text-primary font-bold text-2xl">
+          TripHack
         </Link>
-        <Link to="/Discover" className="text-white font-bold">
+        <Link to="/Discover" className="text-primary font-bold text-2xl">
           Discover
         </Link>
-
+      </ul>
+      <div>
         {isLoggedIn ? (
-          <Link to="/Profile" className="text-white font-bold">
+          <Link to="/Profile" className="text-primary font-bold text-2xl pr-5">
             Profile
           </Link>
         ) : (
-          <Link to="/onboarding" className="text-white font-bold">
+          <Link to="/onboarding" className="text-primary font-bold text-2xl pr-5">
             Login
           </Link>
         )}
-      </ul>
-        <div>
-          <h1 className="text-white pr-5 font-extrabold text-4xl">
-            TripHack
-          </h1>
-        </div>
-
+      </div>
     </nav>
   );
 }

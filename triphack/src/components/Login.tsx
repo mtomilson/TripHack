@@ -22,6 +22,7 @@ export default function Login() {
         .then((user) => {
           setUser(user);
           console.log(user);
+          localStorage.setItem("loggedIn", "true")
           navigate("/")
         })
         .catch((error) => {
@@ -48,6 +49,7 @@ export default function Login() {
                  border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400
                  focus:outline-none focus:ring-1 focus:ring-gray-400 offset-1 disabled:cursor-not-allowed
                  disabled:opacity-50"
+                 autoComplete="email"
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
@@ -63,6 +65,7 @@ export default function Login() {
             <div className="mt-2">
               <input
                 placeholder="Password"
+                type="password"
                 className="flex h-10 w-full rounded-md border
                  border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400
                  focus:outline-none focus:ring-1 focus:ring-gray-400 offset-1 disabled:cursor-not-allowed
