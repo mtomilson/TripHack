@@ -17,7 +17,6 @@ router.get("/search", async (req, res) => {
       },
     })
     const data = await response.json();
-    console.log(data);
     return res.json(data);
   } catch (error) {
     console.log(error);
