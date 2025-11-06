@@ -16,3 +16,4 @@
 
 ## Styling
 - **TailwindCSS** - used for styling the website, simple to use and easy to implement
+
