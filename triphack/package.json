@@ -8,10 +8,13 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "npx tsx src/backend/server.ts"
+    "start": "npx tsx src/backend/server.ts",
+    "apollo": "npx tsx src/backend/graphql/graphqlServer.ts"
   },
   "dependencies": {
+    "@apollo/client": "^4.0.9",
     "@apollo/server": "^5.1.0",
+    "@as-integrations/express4": "^1.1.2",
     "@tailwindcss/vite": "^4.1.15",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",

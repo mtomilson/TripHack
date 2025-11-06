@@ -1,8 +1,7 @@
 import express from "express";
 import cors from "cors";
 import amadeus from "./routes/amadeus";
-
-
+import { expressMiddleware } from '@as-integrations/express4';
 
 
 const app = express();
