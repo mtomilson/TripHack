@@ -55,7 +55,7 @@ export default function HomePage() {
           </form> */}
         </div>
         <div className="mt-4">
-          {address === null ? <></> : <Options data={address} />}
+          {address === null ? <></> : <Options propData={address} />}
         </div>
       </div>
     </>
