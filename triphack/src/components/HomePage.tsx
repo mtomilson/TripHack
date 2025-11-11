@@ -1,6 +1,9 @@
 import { CiSearch } from "react-icons/ci";
 import React, { useEffect, useRef, useState } from "react";
 import Options from "./Options";
+import Progress from "./Progress";
+import type { StepName } from "./Progress";
+
 import Radar from "radar-sdk-js";
 import "radar-sdk-js/dist/radar.css";
 
@@ -8,55 +11,57 @@ export default function HomePage() {
   const autocompleteRef = useRef<ReturnType<
     typeof Radar.ui.autocomplete
   > | null>(null);
+
   const [address, setAddress] = useState(null);
+  const [activeStep, setActiveStep] = useState<StepName>("Flights");
 
-  useEffect(() => {
-    Radar.initialize(import.meta.env.VITE_RADAR_API_PUBLISH as string);
+  const handleStepChange = (step: StepName) => {
+    // pass this function into the Progress component, when progress calls this function it directly runs in this component
+    setActiveStep(step);
+    console.log(step);
+  };
 
-    autocompleteRef.current = Radar.ui.autocomplete({
-      container: "autocomplete",
-      width: "600px",
-      debounceMS: 400,
-      limit: 4,
-      placeholder: "Enter Destination...",
+  // useEffect(() => {
+  //   Radar.initialize(import.meta.env.VITE_RADAR_API_PUBLISH as string);
 
-      onSelection: (address) => {
-        setAddress(address);
-      },
-    });
-    return () => {
-      autocompleteRef.current?.remove();
-    };
-  }, []);
+  //   autocompleteRef.current = Radar.ui.autocomplete({
+  //     container: "autocomplete",
+  //     width: "600px",
+  //     debounceMS: 400,
+  //     limit: 4,
+  //     placeholder: "Enter Destination...",
 
- 
+  //     onSelection: (address) => {
+  //       setAddress(address);
+  //     },
+  //   });
+  //   return () => {
+  //     autocompleteRef.current?.remove();
+  //   };
+  // }, []);
+
   return (
     <>
-
       <div className="flex flex-col text-center items-center justify-center pt-20 text-3xl">
-        <p className="font-bold text-black">
-          Welcome to TripHack! Find all your trip planning needs in one spot!
+        <p className="font-extrabold text-black text-5xl">
+          Plan Your Perfect Trip
         </p>
         <div className="mt-5">
-          <p className="font-bold text-black">Where to?</p>
+          <p className="text-2xl text-gray-500">
+            Book flights, hotels, and plan your itinerary all in one place.
+          </p>
         </div>
 
-        <div id="autocomplete" className="mt-5 flex w-400 h-12 justify-center">
-          {/* <form className="flex items-center w-full max-w-lg border border-black rounded-full overflow-hidden">
-            <button className="pl-3 hover:cursor-pointer">
-              <CiSearch/>
-            </button>
-            <input
-              type="text"
-              placeholder="Enter Destination..."
-              id="auto-complete"
-              className="flex-1 p-3  outline-none placeholder:text-gray-500 text-sm"
-            />
-          </form> */}
+        {/* <div
+          id="autocomplete"
+          className="mt-5 flex w-400 h-12 justify-center"
+        ></div> */}
+        <div>
+          <Progress onStepChange={handleStepChange} activeStep={activeStep} />
         </div>
-        <div className="mt-4">
+        {/* <div className="mt-4">
           {address === null ? <></> : <Options propData={address} />}
-        </div>
+        </div> */}
       </div>
     </>
   );
