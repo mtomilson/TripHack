@@ -2,10 +2,20 @@ import { CiSearch } from "react-icons/ci";
 import React, { useEffect, useRef, useState } from "react";
 import Options from "./Options";
 import Progress from "./Progress";
+
+
 import type { StepName } from "./Progress";
 
 import Radar from "radar-sdk-js";
 import "radar-sdk-js/dist/radar.css";
+
+//import step components 
+
+import Flights from "./step_components/Flights";
+import Hotels from "./step_components/Hotels";
+import Itinerary from "./step_components/Itinerary";
+
+
 
 export default function HomePage() {
   const autocompleteRef = useRef<ReturnType<
@@ -15,11 +25,20 @@ export default function HomePage() {
   const [address, setAddress] = useState(null);
   const [activeStep, setActiveStep] = useState<StepName>("Flights");
 
+  const StepComponentMap: Record<StepName, React.ComponentType> = { // component map, easy to expand and easy to set up Record<key, value> strongly typed cannot be different 
+    Flights: Flights,
+    Hotel: Hotels,
+    Itinerary: Itinerary,
+  }
+
   const handleStepChange = (step: StepName) => {
     // pass this function into the Progress component, when progress calls this function it directly runs in this component
     setActiveStep(step);
     console.log(step);
   };
+
+  const Component = StepComponentMap[activeStep];
+
 
   // useEffect(() => {
   //   Radar.initialize(import.meta.env.VITE_RADAR_API_PUBLISH as string);
@@ -59,6 +78,11 @@ export default function HomePage() {
         <div>
           <Progress onStepChange={handleStepChange} activeStep={activeStep} />
         </div>
+          
+        <Component/>
+
+
+
         {/* <div className="mt-4">
           {address === null ? <></> : <Options propData={address} />}
         </div> */}
