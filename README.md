@@ -1,5 +1,6 @@
 # TripHack
-travel assist
+## Plan your vacation all in one spot
+## WORK IN PROGRESS
 ## HOW TO RUN 
 - npm i 
 - npm run dev to website
