@@ -1,0 +1,25 @@
+export const airlines = {
+  "7G": "Star Flyer",
+  "AA": "American Airlines",
+  "AC": "Air Canada",
+  "AF": "Air France",
+  "AS": "Alaska Airlines",
+  "AT": "Royal Air Maroc",
+  "AY": "Finnair",
+  "B6": "JetBlue Airways",
+  "BR": "EVA Air",
+  "CX": "Cathay Pacific",
+  "FM": "Shanghai Airlines",
+  "HA": "Hawaiian Airlines",
+  "JL": "Japan Airlines",
+  "KE": "Korean Air",
+  "LH": "Lufthansa",
+  "MU": "China Eastern Airlines",
+  "NH": "All Nippon Airways",
+  "OZ": "Asiana Airlines",
+  "PR": "Philippine Airlines",
+  "QF": "Qantas Airways",
+  "TK": "Turkish Airlines",
+  "UA": "United Airlines"
+};
+
