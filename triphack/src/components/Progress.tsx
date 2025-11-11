@@ -47,7 +47,7 @@ export default function Progress({ onStepChange, activeStep}: ProgressProps) {
             </button>
 
             {i < steps.length - 1 && (
-              <div className={`w-20 h-1  mt-6 ${i < activeIndex - 1 ? "bg-gradient-to-r from-primary to-secondary" : "bg-unselected"}`}/>
+              <div className={`w-20 h-1  mt-6 ${i < activeIndex - 1 ? "bg-linear-to-r from-primary to-secondary" : "bg-unselected"}`}/>
 
            
             )}
