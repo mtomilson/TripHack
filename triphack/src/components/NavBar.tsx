@@ -18,7 +18,7 @@ export default function NavBar() {
   });
 
   return (
-    <nav className="bg-white flex justify-between items-center pl-5 h-13 shadow">
+    <nav className="bg-white flex justify-between items-center pl-5 h-13 shadow sticky top-0">
       <ul className="flex space-x-6">
         <Link to="/" className="text-primary font-bold text-2xl">
           TripHack
