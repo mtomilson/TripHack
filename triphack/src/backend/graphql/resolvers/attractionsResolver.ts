@@ -1,6 +1,6 @@
 import { getAccessToken } from "../../utils/amadeusAuth"
 
-export const resolvers = {
+export const attractionsResolver = {
     Query: {
         searchAttractions: async (_: any, {longitude, latitude}: {longitude: number; latitude: number}) => {
             const token = await getAccessToken();

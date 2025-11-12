@@ -1,6 +1,6 @@
 import { gql } from "graphql-tag";
 
-export const typeDefs = gql`
+export const attractionsTypeDefs = gql`
   type Attraction {
     name: String
     price: Price

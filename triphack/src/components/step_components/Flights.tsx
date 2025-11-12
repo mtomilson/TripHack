@@ -1,13 +1,62 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
+import { gql } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client/react";
 
-type AirportQuery = {
-  origin: string;
-  destination: string;
-  departure: string;
-  returnDate: string;
-  roundTrip: boolean;
-};
+import FlightsOptions from "./FlightsOptions";
+
+const SEARCH_FLIGHTS = gql`
+  query SearchFlights(
+    $origin: String!
+    $destination: String!
+    $departure: String!
+    $returnDate: String
+    $roundTrip: Boolean
+  ) {
+    searchFlights(
+      origin: $origin
+      destination: $destination
+      departure: $departure
+      returnDate: $returnDate
+      roundTrip: $roundTrip
+    ) {
+      price {
+        total
+        currency
+      }
+      departureFlight {
+        duration
+        segments {
+          arrival {
+            iataCode
+            time
+          }
+          departure {
+            iataCode
+            time
+          }
+          duration
+          carrierCode
+        }
+      }
+      returnFlight {
+        duration
+        segments {
+          arrival {
+            iataCode
+            time
+          }
+          departure {
+            iataCode
+            time
+          }
+          duration
+          carrierCode
+        }
+      }
+    }
+  }
+`;
 
 export default function Flights() {
   const [selectedButton, setSelectedButton] = useState<
@@ -19,37 +68,12 @@ export default function Flights() {
   const [departure, setDeparture] = useState<string>("");
   const [returnDate, setReturnDate] = useState<string>("");
   const [roundTrip, setRoundTrip] = useState<boolean>(true);
+  const [searchFlights, { loading, error, data }] =
+    useLazyQuery(SEARCH_FLIGHTS);
 
-  const handleSearch = async () => {
-    const query: AirportQuery = {
-      origin,
-      destination,
-      departure,
-      returnDate,
-      roundTrip,
-    };
-
-    const params = new URLSearchParams({
-      origin: query.origin,
-      destination: query.destination,
-      departure: query.departure,
-      returnDate: query.returnDate,
-      roundTrip: String(query.roundTrip),
-    });
-
-    try {
-      const res = await fetch(
-        `http://localhost:5000/api/amadeus/search/flights?${params}`
-      );
-
-      const data = await res.json();
-      console.log("FLIGHT RESULTS", data);
-
-      // Do something with data...
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <div className="flex justify-center mt-10">
@@ -58,7 +82,10 @@ export default function Flights() {
 
         <div className="flex justify-center gap-3 mb-4">
           <button
-            onClick={() => setSelectedButton("round-trip")}
+            onClick={() => {
+              setSelectedButton("round-trip");
+              setRoundTrip(true);
+            }}
             className={`w-[120px] h-[40px] flex items-center justify-center text-sm ${
               selectedButton === "round-trip"
                 ? "bg-primary text-gray-100"
@@ -139,11 +166,25 @@ export default function Flights() {
         <div>
           <button
             className="w-full bg-primary text-white rounded-xl h-12 justify-center mt-10 hover:cursor-pointer"
-            onClick={handleSearch}
+            onClick={() =>
+              searchFlights({
+                variables: {
+                  origin: origin,
+                  destination: destination,
+                  departure: departure,
+                  returnDate: returnDate,
+                  roundTrip: roundTrip,
+                },
+              })
+            }
           >
             {" "}
             Search Flights
           </button>
+        </div>
+
+        <div>
+          <FlightsOptions propData={data} />
         </div>
       </div>
     </div>

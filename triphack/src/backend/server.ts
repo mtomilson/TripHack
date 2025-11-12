@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import amadeus from "./routes/amadeus";
 import { expressMiddleware } from '@as-integrations/express4';
-import { typeDefs } from "./graphql/schemas/attractionsSchema";
-import { resolvers } from "./graphql/resolvers/attractionsResolver";
+import { typeDefs } from "./graphql/schemas/index";
+import { resolvers } from "./graphql/resolvers/index";
 import { ApolloServer } from "@apollo/server";
 
 
