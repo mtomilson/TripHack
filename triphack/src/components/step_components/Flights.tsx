@@ -5,6 +5,50 @@ import { useLazyQuery } from "@apollo/client/react";
 
 import FlightsOptions from "./FlightsOptions";
 
+interface Flight {
+  searchFlights: {
+    price: {
+      total: string;
+      currency: string;
+    };
+
+    departureFlight: {
+      duration: string;
+      segments: {
+        arrival: {
+          iataCode: string;
+          time: string;
+        };
+        departure: {
+          iataCode: string;
+          time: string;
+        };
+        duration: string;
+        carrierCode: string;
+      };
+    };
+    returnFlight: {
+      duration: string;
+      segments: {
+        arrival: {
+          iataCode: string;
+          time: string;
+        };
+        departure: {
+          iataCode: string;
+          time: string;
+        };
+        duration: string;
+        carrierCode: string;
+      };
+    };
+  };
+}
+
+interface flightData {
+  searchFlights: Flight[];
+}
+
 const SEARCH_FLIGHTS = gql`
   query SearchFlights(
     $origin: String!
@@ -69,7 +113,7 @@ export default function Flights() {
   const [returnDate, setReturnDate] = useState<string>("");
   const [roundTrip, setRoundTrip] = useState<boolean>(true);
   const [searchFlights, { loading, error, data }] =
-    useLazyQuery(SEARCH_FLIGHTS);
+    useLazyQuery<flightData>(SEARCH_FLIGHTS);
 
   useEffect(() => {
     console.log(data);
@@ -77,7 +121,7 @@ export default function Flights() {
 
   return (
     <div className="flex justify-center mt-10">
-      <div className="w-[1200px] h-[650px] mb-5 shadow-2xl p-6">
+      <div className="w-[1200px] h-auto mb-5 shadow-2xl p-6">
         <p className="text-2xl font-bold mb-6">Find your Flight</p>
 
         <div className="flex justify-center gap-3 mb-4">
@@ -182,9 +226,11 @@ export default function Flights() {
             Search Flights
           </button>
         </div>
-
-        <div>
-          <FlightsOptions propData={data} />
+        {loading && <div>Loading data...</div>}
+        <div className="grid grid-cols-2 gap-4">
+          {data?.searchFlights?.map((flight) => (
+            <FlightsOptions flight={flight} />
+          ))}
         </div>
       </div>
     </div>
