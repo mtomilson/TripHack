@@ -20,6 +20,34 @@ export const airlines = {
   "PR": "Philippine Airlines",
   "QF": "Qantas Airways",
   "TK": "Turkish Airlines",
-  "UA": "United Airlines"
+  "UA": "United Airlines",
+  "NK": "Spirit Airlines"
 };
+export const airlineImages: Record<string,string> = {
+  "7G": "https://upload.wikimedia.org/wikipedia/commons/4/44/StarFlyer_logo.svg",
+  "AA": "https://images.seeklogo.com/logo-png/18/1/american-airlines-logo-png_seeklogo-184462.png",
+  "AC": "https://logos-world.net/wp-content/uploads/2021/05/Air-Canada-Logo-700x394.png",
+  "AF": "https://images.seeklogo.com/logo-png/46/1/air-france-logo-png_seeklogo-464865.png",
+  "AS": "https://brandlogos.net/wp-content/uploads/2021/11/alaska_airlines-logo-512x512.png",
+  "AT": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Logo_Royal_Air_Maroc.svg/1280px-Logo_Royal_Air_Maroc.svg.png",
+  "AY": "https://brand.finnair.com/resource/image/2281016/landscape_ratio1050x590/1050/590/690322516e4f3826626199ff603f7328/6284236157F08CFA2DDC75E745F4A4CF/finnair-logo.png",
+  "B6": "https://images.seeklogo.com/logo-png/7/1/jetblue-airways-logo-png_seeklogo-75453.png",
+  "BR": "https://images.seeklogo.com/logo-png/5/1/eva-air-logo-png_seeklogo-50384.png",
+  "CX": "https://1000logos.net/wp-content/uploads/2020/04/Cathay-Pacific-Logo-500x281.png",
+  "FM": "https://images.seeklogo.com/logo-png/27/1/shanghai-airlines-logo-png_seeklogo-277958.png",
+  "HA": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3b/Hawaiian_Airlines_logo_2017.svg/1024px-Hawaiian_Airlines_logo_2017.svg.png",
+  "JL": "https://images.seeklogo.com/logo-png/50/1/japan-airlines-logo-png_seeklogo-500081.png",
+  "KE": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxkdT4bGelSzZCzKQ4ika7oDt3wS4FYls3Kg&s",
+  "LH": "https://images.seeklogo.com/logo-png/8/2/lufthansa-logo-png_seeklogo-86162.png",
+  "MU": "https://images.seeklogo.com/logo-png/2/1/china-eastern-airlines-logo-png_seeklogo-29758.png",
+  "NH": "https://images.seeklogo.com/logo-png/25/1/all-nippon-airways-logo-png_seeklogo-255286.png",
+  "OZ": "https://brandlogos.net/wp-content/uploads/2014/10/asiana_airlines-logo-brandlogos.net_.png",
+  "PR": "https://images.seeklogo.com/logo-png/1/3/asiana-airlines-logo-png_seeklogo-11896.png",
+  "QF": "https://images.seeklogo.com/logo-png/49/1/qantas-logo-png_seeklogo-492480.png",
+  "TK": "https://images.seeklogo.com/logo-png/36/2/turkish-airlines-logo-png_seeklogo-366077.png",
+  "UA": "https://images.seeklogo.com/logo-png/61/1/united-airlines-icon-logo-png_seeklogo-615609.png",
+  "NK": "https://play-lh.googleusercontent.com/EAoDg62PBmZAUp5O7BYuwkmKz7IvO9f6tPs2j623xTSnDbXwPUv1ByqRtfkUtGbjwQ"
+};
+
+
 

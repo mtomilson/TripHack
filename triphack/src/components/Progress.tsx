@@ -39,7 +39,7 @@ export default function Progress({ onStepChange, activeStep}: ProgressProps) {
         return (
           <>
             <button className="flex flex-col items-center hover:cursor-pointer" onClick={() => onStepChange(step.name)}>
-              <Icon size={50} color={`${i < activeIndex ? "#3F84E5" : "#a8a8a7"}`} />
+              <Icon size="50" color={`${i < activeIndex ? "#3F84E5" : "#a8a8a7"}`} />
 
               <div className="mt-2">
                 <p className={`${isActive ? "text-primary font-bold" : "text-unselected"}`}>{step.name}</p>
