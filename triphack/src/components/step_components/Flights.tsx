@@ -227,9 +227,30 @@ export default function Flights() {
           </button>
         </div>
         {loading && <div>Loading data...</div>}
+
+        <style>{`
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`}</style>
+
         <div className="grid grid-cols-2 gap-4">
-          {data?.searchFlights?.map((flight) => (
-            <FlightsOptions flight={flight} />
+          {data?.searchFlights?.map((flight, index) => (
+            <div
+              key={index}
+              style={{
+                animation: `fadeInUp 0.5s ease-out ${index * 0.1 }s both`,
+              }}
+            >
+              <FlightsOptions flight={flight} />
+            </div>
           ))}
         </div>
       </div>
