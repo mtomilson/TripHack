@@ -21,7 +21,8 @@ export const airlines = {
   "QF": "Qantas Airways",
   "TK": "Turkish Airlines",
   "UA": "United Airlines",
-  "NK": "Spirit Airlines"
+  "NK": "Spirit Airlines",
+  "CA": "Air China"
 };
 export const airlineImages: Record<string,string> = {
   "7G": "https://upload.wikimedia.org/wikipedia/commons/4/44/StarFlyer_logo.svg",
@@ -46,7 +47,8 @@ export const airlineImages: Record<string,string> = {
   "QF": "https://images.seeklogo.com/logo-png/49/1/qantas-logo-png_seeklogo-492480.png",
   "TK": "https://images.seeklogo.com/logo-png/36/2/turkish-airlines-logo-png_seeklogo-366077.png",
   "UA": "https://images.seeklogo.com/logo-png/61/1/united-airlines-icon-logo-png_seeklogo-615609.png",
-  "NK": "https://play-lh.googleusercontent.com/EAoDg62PBmZAUp5O7BYuwkmKz7IvO9f6tPs2j623xTSnDbXwPUv1ByqRtfkUtGbjwQ"
+  "NK": "https://play-lh.googleusercontent.com/EAoDg62PBmZAUp5O7BYuwkmKz7IvO9f6tPs2j623xTSnDbXwPUv1ByqRtfkUtGbjwQ",
+  "CA": "https://1000logos.net/wp-content/uploads/2020/06/Air-China-Logo.jpg"
 };
 
 
