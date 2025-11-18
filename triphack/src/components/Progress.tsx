@@ -42,7 +42,7 @@ export default function Progress({ onStepChange, activeStep}: ProgressProps) {
               <Icon size="50" color={`${i < activeIndex ? "#3F84E5" : "#a8a8a7"}`} />
 
               <div className="mt-2">
-                <p className={`${isActive ? "text-primary font-bold" : "text-unselected"}`}>{step.name}</p>
+                <p className={`${i < activeIndex ? "text-primary font-bold" : "text-unselected"}`}>{step.name}</p>
               </div>
             </button>
 
@@ -54,27 +54,6 @@ export default function Progress({ onStepChange, activeStep}: ProgressProps) {
           </>
         );
       })}
-
-      {/* <div className="mt-15 flex justify-between  w-100">
-          <div className="">
-            <button  className="hover:cursor-pointer">
-              <IoAirplaneSharp size="50" color="#FF5E5B"/>
-            </button>
-          </div>
-          <div className="w-20 h-1  mt-6 bg-gradient-to-r from-primary to-secondary"></div>
-
-          <div className="">
-            <button className="hover:cursor-pointer bg-primary w-17 h-17 flex justify-center items-center rounded-xl">
-              <FaHotel size="50" color="white"/>
-            </button>
-          </div>
-          <div className="w-20 h-1  mt-6 bg-gradient-to-r from-primary to-secondary"></div> 
-          <div className="">
-            <button className="hover:cursor-pointer">
-              <FaCalendar size="50" color="#FF5E5B" />
-            </button>
-          </div>
-        </div> */}
     </div>
   );
 }

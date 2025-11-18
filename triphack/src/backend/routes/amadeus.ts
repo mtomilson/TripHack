@@ -51,4 +51,8 @@ router.get("/search/flights", async (req, res) => {
   
 })
 
+router.get("/search/hotels", async (req, res) => {
+  
+})
+
 export default router;
